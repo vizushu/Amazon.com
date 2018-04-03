@@ -3,7 +3,7 @@ module.exports = {
     // logo, advertising elements
     streamNav: 'div[id="nav-upnav"]',
     logo: 'div[id="nav-logo"',
-    amaIcon: 'i[class="a-icon a-icon-logo"]'
+    amaIcon: 'a[class="a-link-nav-icon"]',
     banner: 'div[id="desktop-banner"]',
     deals: 'div[id="desktop-1"]',
     lowPrice: 'div[id="desktop-3"]',
@@ -15,7 +15,7 @@ module.exports = {
 
     // navigation menu
     account: '//*[@id="nav-link-accountList"]/span[2]',
-    signInbut: '#nav-flyout-ya-signin > a > span',
+    signIn: '#nav-flyout-ya-signin > a > span',
     cr8Acc: 'a[id="createAccountSubmit"]',
     orders: 'a[href="/gp/css/order-history/ref=nav_nav_orders_first"]',
     tryPrime: 'a[href="/gp/prime/ref=nav_prime_try_btn"]',
@@ -25,7 +25,7 @@ module.exports = {
             inputEmail : 'input[type="email"]',
             continueBut: 'input[id="continue"]',
             inputPass: 'input[type="password"]',
-            signInBut: 'input[id="signInSubmit"]',
+            signInBut: 'span[id="a-autoid-0-announce"]',
             singOutBut: 'a[id="nav-item-signout-sa"]',
     
     srchInput: 'a[id="twotabsearchtextbox"]',
