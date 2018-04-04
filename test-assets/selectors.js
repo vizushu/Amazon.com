@@ -14,7 +14,8 @@ module.exports = {
 
 
     // navigation menu
-    account: '//*[@id="nav-link-accountList"]/span[2]',
+    account: 'div[id="nav-al-your-account"]',       
+    accList: '//*[@id="nav-link-accountList"]/span[2]',
     signIn: '#nav-flyout-ya-signin > a > span',
     cr8Acc: 'a[id="createAccountSubmit"]',
     orders: 'a[href="/gp/css/order-history/ref=nav_nav_orders_first"]',

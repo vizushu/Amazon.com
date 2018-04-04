@@ -32,8 +32,8 @@ let smokeTest = (browser, value) => {
         .verify.containsText(selector.lowPrice, data.lowprice)
         
         .useXpath()
-        .waitForElementPresent(selector.account, 1000)
-        .verify.containsText(selector.account, data.account)
+        .waitForElementPresent(selector.accList, 1000)
+        .verify.containsText(selector.accList, data.account)
         
 }
 
@@ -48,9 +48,10 @@ let userSignIn = (browser, value) => {
         .verify.containsText(selector.logo, 'Amazon')
 
         .useXpath()
-        .waitForElementPresent(selector.account, 1000)
-        .verify.containsText(selector.account, data.account)
-        .click(selector.account)
+        .waitForElementPresent(selector.accList, 1000)
+        .verify.containsText(selector.accList, data.account)
+        .click(selector.accList)
+        .pause(5000)
         
         .useCss()
         .waitForElementPresent(selector.amaIcon, 2000)
@@ -96,6 +97,24 @@ let userSignOut = (browser, value) => {
         .verify.elementPresent(selector.logo)
         .assert.visible(selector.logo)
         .verify.containsText(selector.logo, 'Amazon')
+
+        .getLocation(selector.accList)
+
+        .useXpath()
+        .click(selector.accList)
+        .pause(2000)
+        .waitForElementPresent(selector.accList, 1000)
+        .verify.elementPresent(selector.accList)
+        .assert.visible(selector.accList)
+        .verify.containsText(selector.accList, data.account)
+
+        .useCss()
+        .click('span[class="nav-icon nav-arrow"]')
+        .pause(1000)
+        .moveTo(selector.accList)
+        .click(selector.singOutBut)
+        .pause(2000)
+
 }
 module.exports = {
     smokeTest: smokeTest,
