@@ -34,20 +34,18 @@ let smokeTest = (browser, value) => {
         .useXpath()
         .waitForElementPresent(selector.account, 1000)
         .verify.containsText(selector.account, data.account)
-        .end()
         
 }
 
 let userSignIn = (browser, value) => {
     browser
-        .pause(5000)
         .assert.title(data.titlepage)
         .assert.urlContains(data.url)
         .waitForElementPresent('body', 1000)
         .assert.visible('body')
         .verify.elementPresent(selector.logo)
         .assert.visible(selector.logo)
-        .verify.containsText(selector.logo, data.amazon)
+        .verify.containsText(selector.logo, 'Amazon')
 
         .useXpath()
         .waitForElementPresent(selector.account, 1000)
@@ -55,7 +53,6 @@ let userSignIn = (browser, value) => {
         .click(selector.account)
         
         .useCss()
-        .pause(5000)
         .waitForElementPresent(selector.amaIcon, 2000)
         .verify.elementPresent(selector.amaIcon)
         .assert.visible(selector.amaIcon)
@@ -74,14 +71,34 @@ let userSignIn = (browser, value) => {
         .verify.value(selector.inputPass, data.password)
 
         .pause(5000)
+        .assert.title("Amazon Sign In")
+        .assert.urlContains(data.url)
+        .waitForElementPresent('body', 1000)
+        .assert.visible('body')
         .waitForElementPresent(selector.signInBut, 1000)
         .verify.elementPresent(selector.signInBut)
         .assert.visible(selector.signInBut)
-        .verify.containsText(selector.signInBut, 'Sign in')
+        .verify.containsText(selector.signinText, 'Sign in')
         .click(selector.signInBut)
+        .waitForElementPresent('body', 5000)
+        
 
+}
+
+let userSignOut = (browser, value) => {
+    browser
+     
+        .pause(2000)
+        .assert.title(data.titlepage)
+        .assert.urlContains(data.url)
+        .waitForElementPresent('body', 1000)
+        .assert.visible('body')
+        .verify.elementPresent(selector.logo)
+        .assert.visible(selector.logo)
+        .verify.containsText(selector.logo, 'Amazon')
 }
 module.exports = {
     smokeTest: smokeTest,
     userSignIn: userSignIn,
+    userSignOut: userSignOut
 }

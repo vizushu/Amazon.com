@@ -25,7 +25,8 @@ module.exports = {
             inputEmail : 'input[type="email"]',
             continueBut: 'input[id="continue"]',
             inputPass: 'input[type="password"]',
-            signInBut: 'span[id="a-autoid-0-announce"]',
+            signInBut: 'input[id="signInSubmit"]',
+            signinText: 'span[id="a-autoid-0-announce"]',
             singOutBut: 'a[id="nav-item-signout-sa"]',
     
     srchInput: 'a[id="twotabsearchtextbox"]',
