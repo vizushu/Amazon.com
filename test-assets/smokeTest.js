@@ -12,7 +12,7 @@ let smokeTest = (browser, value) => {
         .verify.elementPresent(selector.logo)
         .assert.visible(selector.logo)
         .verify.containsText(selector.logo, data.amazon)
-        .waitForElementPresent(selector.streamNav, 1000)
+        .waitForElementPresent(selector.streamNav, 2000)
         .verify.elementPresent(selector.streamNav)
         .assert.visible(selector.streamNav)
         .waitForElementPresent(selector.banner, 1000)
@@ -54,7 +54,7 @@ let userSignIn = (browser, value) => {
         .pause(5000)
         
         .useCss()
-        .waitForElementPresent(selector.amaIcon, 2000)
+        // .waitForElementPresent(selector.amaIcon, 4000)
         .verify.elementPresent(selector.amaIcon)
         .assert.visible(selector.amaIcon)
 
@@ -98,9 +98,10 @@ let userSignOut = (browser, value) => {
         .assert.visible(selector.logo)
         .verify.containsText(selector.logo, 'Amazon')
 
-        .getLocation(selector.accList)
+        
 
         .useXpath()
+        .moveToElement(selector.accList, 10, 30)
         .click(selector.accList)
         .pause(2000)
         .waitForElementPresent(selector.accList, 1000)
@@ -109,9 +110,7 @@ let userSignOut = (browser, value) => {
         .verify.containsText(selector.accList, data.account)
 
         .useCss()
-        .click('span[class="nav-icon nav-arrow"]')
         .pause(1000)
-        .moveTo(selector.accList)
         .click(selector.singOutBut)
         .pause(2000)
 
