@@ -52,9 +52,9 @@ let userSignIn = (browser, value) => {
     browser
         .pause(2000)
     signin
-        .waitForElementPresent('@amaIcon', 4000)
-        .verify.elementPresent('@amaIcon')
-        .assert.visible('@amaIcon')
+        // .waitForElementPresent('@amaIcon', 4000)
+        // .verify.elementPresent('@amaIcon')
+        // .assert.visible('@amaIcon')
 
         .verify.elementPresent('@inputEmail')
         .click('@inputEmail')
@@ -126,15 +126,14 @@ let userCreation = (browser, value) => {
     browser
         .pause(2000)
     usercreate
-        .waitForElementPresent('@amaIcon', 4000)
         .assert.visible('@amaIcon')
         .assert.title('Amazon Sign In')
         .verify.elementPresent('@cr8Acc')
         .verify.containsText('@cr8Acc', 'Create your Amazon account')
         .click('@cr8Acc')
-        .waitForElementPresent('@amaIcon', 2000)
-        .assert.visible('@amaIcon')
-        .assert.title('Amazon Sign In')
+        // .waitForElementPresent('@amaIcon', 2000)
+        // .assert.visible('@amaIcon')
+        .assert.title('Amazon Registration')
 
         .verify.elementPresent('@newNameInput')
         .assert.visible('@urName')
@@ -150,7 +149,7 @@ let userCreation = (browser, value) => {
 
         .verify.elementPresent('@rePassInput')
         .assert.visible('@urRePass')
-        .verify.containsText('@urRePass', 'Re-enter Password')
+        .verify.containsText('@urRePass', 'Re-enter password')
 
 }   
 module.exports = {

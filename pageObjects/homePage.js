@@ -27,7 +27,7 @@ module.exports = {
         //Create account
         newNameInput : 'input[type="text"]',
         newEmailInput : 'input[type="email"]',
-        newPassInput : 'inputp[id="ap_password"]',
+        newPassInput : 'input[id="ap_password"]',
         rePassInput : 'input[id="ap_password_check"]',
         contButton : 'input[id="continue"]',
 
