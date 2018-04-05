@@ -98,8 +98,6 @@ let userSignOut = (browser, value) => {
         .assert.visible(selector.logo)
         .verify.containsText(selector.logo, 'Amazon')
 
-        
-
         .useXpath()
         .moveToElement(selector.accList, 10, 30)
         .click(selector.accList)
