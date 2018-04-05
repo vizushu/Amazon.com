@@ -13,9 +13,24 @@ module.exports = {
         browser
             .waitForElementPresent('body', 1000)
     },
-    'Smoke Test' : browser => {functions.smokeTest(browser)},
-    'As a user I would like to sign in' : browser => {functions.userSignIn(browser)},
-    'As a user I would like to sign out': browser => {functions.userSignOut(browser)},
+
+    'Smoke Test' : browser => {
+        functions.didpageLoad(browser)
+        functions.mainContent(browser)
+        functions.userSignIn(browser)
+        functions.userSignOut(browser)
+    },
+
+    'As a user I would like to sign in' : browser => {
+        functions.didpageLoad(browser)
+        functions.userSignIn(browser)
+    },
+
+    'As a user I would like to sign out': browser => {
+        functions.didpageLoad(browser)
+        functions.userSignIn(browser)
+        functions.userSignOut(browser)
+    },
     // 'As a user I would like to create my own account' : browser => {func}
    
 
