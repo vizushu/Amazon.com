@@ -17,18 +17,19 @@ module.exports = {
     account: 'div[id="nav-al-your-account"]',       
     accList: '//*[@id="nav-link-accountList"]/span[2]',
     signIn: '#nav-flyout-ya-signin > a > span',
-    cr8Acc: 'a[id="createAccountSubmit"]',
+    
     orders: 'a[href="/gp/css/order-history/ref=nav_nav_orders_first"]',
     tryPrime: 'a[href="/gp/prime/ref=nav_prime_try_btn"]',
     cart: 'a[href="/gp/cart/view.html/ref=nav_cart"]',
 
-        //Sign In/Out
+        //Sign In/Out, create account
             inputEmail : 'input[type="email"]',
             continueBut: 'input[id="continue"]',
             inputPass: 'input[type="password"]',
             signInBut: 'input[id="signInSubmit"]',
             signinText: 'span[id="a-autoid-0-announce"]',
             singOutBut: 'a[id="nav-item-signout-sa"]',
+            cr8Acc: 'a[id="createAccountSubmit"]',
     
     srchInput: 'a[id="twotabsearchtextbox"]',
     submit: 'input[type="submit"]',

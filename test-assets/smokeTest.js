@@ -1,115 +1,162 @@
 const data = require('../test-assets/testData')
-const selector = require('../test-assets/selectors')
-
 
 let didpageLoad = (browser, value) => {
-    browser
+    let homepage = browser.page.homePage();
+    homepage.navigate()
+    homepage
         .assert.title(data.titlepage)
         .assert.urlContains(data.url)
         .waitForElementPresent('body', 1000)
         .assert.visible('body')
-        .verify.elementPresent(selector.logo)
-        .assert.visible(selector.logo)
-        .verify.containsText(selector.logo, 'Amazon')
+        .verify.elementPresent('@logo')
+        .assert.visible('@logo')
+        .verify.containsText('@logo', 'Amazon')
 }
 
+
 let mainContent = (browser, value) => {
-    browser
-        
-        .waitForElementPresent(selector.streamNav, 2000)
-        .verify.elementPresent(selector.streamNav)
-        .assert.visible(selector.streamNav)
-        .waitForElementPresent(selector.banner, 1000)
-        .verify.elementPresent(selector.banner)
-        .assert.elementPresent(selector.banner)
-        .waitForElementPresent(selector.deals, 1000)
-        .verify.elementPresent(selector.deals)
-        .assert.elementPresent(selector.deals)
-        .verify.containsText(selector.deals, data.deals)
-        .waitForElementPresent(selector.lowPrice, 1000)
-        .verify.elementPresent(selector.lowPrice)
-        .assert.elementPresent(selector.lowPrice)
-        .verify.containsText(selector.lowPrice, data.lowprice)
-        .waitForElementPresent(selector.lowPrice, 1000)
-        .verify.elementPresent(selector.lowPrice)
-        .assert.elementPresent(selector.lowPrice)
-        .verify.containsText(selector.lowPrice, data.lowprice)
-        
-        .useXpath()
-        .waitForElementPresent(selector.accList, 1000)
-        .verify.containsText(selector.accList, data.account)
-        
+    let maincontent = browser.page.homePage();
+    maincontent.navigate()
+    maincontent
+        .waitForElementPresent('@streamNav', 2000)
+        .verify.elementPresent('@streamNav')
+        .assert.visible('@streamNav')
+        .waitForElementPresent('@banner', 1000)
+        .verify.elementPresent('@banner')
+        .assert.elementPresent('@banner')
+        .waitForElementPresent('@deals', 1000)
+        .verify.elementPresent('@deals')
+        .assert.elementPresent('@deals')
+        .verify.containsText('@deals', data.deals)
+        .waitForElementPresent('@lowPrice', 1000)
+        .verify.elementPresent('@lowPrice')
+        .assert.elementPresent('@lowPrice')
+        .verify.containsText('@lowPrice', data.lowprice)
+        .waitForElementPresent('@lowPrice', 1000)
+        .verify.elementPresent('@lowPrice')
+        .assert.elementPresent('@lowPrice')
+        .verify.containsText('@lowPrice', data.lowprice)
+
+        .waitForElementPresent('@accList', 1000)
+        .verify.containsText('@accList', data.account)
+
 }
 
 let userSignIn = (browser, value) => {
+    let signin = browser.page.homePage();
+    signin.navigate()
+    signin
+        .waitForElementPresent('@accList', 1000)
+        .verify.containsText('@accList', data.account)
+        .click('@accList')
     browser
-
-        .useXpath()
-        .waitForElementPresent(selector.accList, 1000)
-        .verify.containsText(selector.accList, data.account)
-        .click(selector.accList)
-        .pause(5000)
-        
-        .useCss()
-        // .waitForElementPresent(selector.amaIcon, 4000)
-        .verify.elementPresent(selector.amaIcon)
-        .assert.visible(selector.amaIcon)
-
-        .verify.elementPresent(selector.inputEmail)
-        .click(selector.inputEmail)
-        .setValue(selector.inputEmail, data.username)
-        .verify.value(selector.inputEmail, data.username)
-        .click(selector.continueBut)
         .pause(2000)
-        .waitForElementPresent(selector.inputPass, 1000)
-        .verify.elementPresent(selector.inputPass)
-        .assert.visible(selector.inputPass)
-        .click(selector.inputPass)
-        .setValue(selector.inputPass, data.password)
-        .verify.value(selector.inputPass, data.password)
+    signin
+        .waitForElementPresent('@amaIcon', 4000)
+        .verify.elementPresent('@amaIcon')
+        .assert.visible('@amaIcon')
 
+        .verify.elementPresent('@inputEmail')
+        .click('@inputEmail')
+        .setValue('@inputEmail', data.username)
+        .verify.value('@inputEmail', data.username)
+        .click('@continueBut')
+    browser
+        .pause(2000)
+
+    signin
+        .waitForElementPresent('@inputPass', 1000)
+        .verify.elementPresent('@inputPass')
+        .assert.visible('@inputPass')
+        .click('@inputPass')
+        .setValue('@inputPass', data.password)
+        .verify.value('@inputPass', data.password)
+
+    browser
         .pause(5000)
+
+    signin
         .assert.title("Amazon Sign In")
         .assert.urlContains(data.url)
         .waitForElementPresent('body', 1000)
         .assert.visible('body')
-        .waitForElementPresent(selector.signInBut, 1000)
-        .verify.elementPresent(selector.signInBut)
-        .assert.visible(selector.signInBut)
-        .verify.containsText(selector.signinText, 'Sign in')
-        .click(selector.signInBut)
+        .waitForElementPresent('@signInBut', 1000)
+        .verify.elementPresent('@signInBut')
+        .assert.visible('@signInBut')
+        .verify.containsText('@signinText', 'Sign in')
+        .click('@signInBut')
         .waitForElementPresent('body', 5000)
-        
+
 }
 
 let userSignOut = (browser, value) => {
+    let signout = browser.page.homePage();
+    signout.navigate()
+    signout
+        .moveToElement('@accList', 10, 30)
+        .click('@accList')
     browser
-     
-        .useXpath()
-        .moveToElement(selector.accList, 10, 30)
-        .click(selector.accList)
         .pause(2000)
-        .waitForElementPresent(selector.accList, 1000)
-        .verify.elementPresent(selector.accList)
-        .assert.visible(selector.accList)
-        .verify.containsText(selector.accList, data.account)
-
-        .useCss()
+    signout
+        .waitForElementPresent('@accList', 1000)
+        .verify.elementPresent('@accList')
+        .assert.visible('@accList')
+        .verify.containsText('@accList', data.account)
+    browser
         .pause(1000)
-        .click(selector.singOutBut)
+    signout
+        .click('@singOutBut')
+    browser
         .pause(2000)
-
 }
-
-// let userOrder = (browser, value) => {
-//     browser
-
-//         .
 // }
 
+// // let userOrder = (browser, value) => {
+// //     browser
+
+// //         .
+// // }
+
+
+let userCreation = (browser, value) => {
+    let usercreate = browser.page.homePage();
+    usercreate.navigate()
+    usercreate
+        .click('@accList')
+    browser
+        .pause(2000)
+    usercreate
+        .waitForElementPresent('@amaIcon', 4000)
+        .assert.visible('@amaIcon')
+        .assert.title('Amazon Sign In')
+        .verify.elementPresent('@cr8Acc')
+        .verify.containsText('@cr8Acc', 'Create your Amazon account')
+        .click('@cr8Acc')
+        .waitForElementPresent('@amaIcon', 2000)
+        .assert.visible('@amaIcon')
+        .assert.title('Amazon Sign In')
+
+        .verify.elementPresent('@newNameInput')
+        .assert.visible('@urName')
+        .verify.containsText('@urName', 'Your name')
+
+        .verify.elementPresent('@newEmailInput')
+        .assert.visible('@urEmail')
+        .verify.containsText('@urEmail', 'Email')
+
+        .verify.elementPresent('@newPassInput')
+        .assert.visible('@urPass')
+        .verify.containsText('@urPass', 'Password')
+
+        .verify.elementPresent('@rePassInput')
+        .assert.visible('@urRePass')
+        .verify.containsText('@urRePass', 'Re-enter Password')
+
+}   
 module.exports = {
     mainContent: mainContent,
     userSignIn: userSignIn,
     userSignOut: userSignOut,
     didpageLoad: didpageLoad,
+    userCreation: userCreation,
 }
